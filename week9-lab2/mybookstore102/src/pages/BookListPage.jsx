@@ -3,7 +3,7 @@ import BookCard from '../components/BookCard';
 import SearchBar from '../components/SearchBar';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { ChevronDownIcon } from '@heroicons/react/outline';
-import { getAllBooks } from '../data/booksData';
+
 
 const BookListPage = () => {
   const [books, setBooks] = useState([]);
@@ -19,16 +19,39 @@ const BookListPage = () => {
     'psychology', 'business', 'technology', 'cooking'
   ];
 
-  useEffect(() => {
-    // Load books from data
-    setLoading(true);
-    setTimeout(() => {
-      const booksData = getAllBooks();
-      setBooks(booksData);
-      setFilteredBooks(booksData);
-      setLoading(false);
-    }, 1000);
-  }, []);
+  const [error, setError] = useState(null);
+
+ useEffect(() => {
+  // เริ่มโหลดข้อมูล
+  setLoading(true);
+
+  // ใช้ฟังก์ชัน fetch เพื่อดึงข้อมูลจากฐานข้อมูล
+  const fetchBooks = async () => {
+    try {
+      // เรียก API เพื่อดึงข้อมูลหนังสือ
+      const response = await fetch('http://localhost:8080/api/v1/books');
+      
+      if (!response.ok) {
+        throw new Error('ไม่สามารถดึงข้อมูลหนังสือ');
+      }
+
+      const data = await response.json();
+
+      // เก็บข้อมูลหนังสือทั้งหมดใน state
+      setBooks(data);
+      setFilteredBooks(data);
+    } catch (err) {
+      console.error('เกิดข้อผิดพลาดในการดึงข้อมูลหนังสือ:', err);
+      setError(err.message); // เก็บข้อความข้อผิดพลาด
+    } finally {
+      setLoading(false); // ปิดสถานะการโหลด
+    }
+  };
+
+  // เรียกใช้ฟังก์ชันดึงข้อมูล
+  fetchBooks();
+}, []);
+
 
   const handleSearch = (searchTerm) => {
     const filtered = books.filter(book => 
