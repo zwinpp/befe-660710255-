@@ -11,11 +11,11 @@ const FeaturedBooks = () => {
     const fetchBooks = async () => {
       try {
         setLoading(true);
-        
+
         // เรียก API เพื่อดึงข้อมูลหนังสือ
         const response = await fetch('/api/v1/books/');
         console.log('Response:', response);
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch books');
         }
@@ -28,11 +28,11 @@ const FeaturedBooks = () => {
 
         setFeaturedBooks(selected);
         setError(null);
-        
+
       } catch (err) {
         setError(err.message);
         console.error('Error fetching books:', err);
-        
+
       } finally {
         setLoading(false);
       }
@@ -68,9 +68,9 @@ const FeaturedBooks = () => {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {featuredBooks.map(book => (
-        <BookCard 
-          key={book.id} 
-          book={book} 
+        <BookCard
+          key={book.id}
+          book={book}
         />
       ))}
     </div>

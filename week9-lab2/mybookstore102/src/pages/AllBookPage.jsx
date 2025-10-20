@@ -58,10 +58,8 @@ const AllBookPage = () => {
   };
 
   const handleEdit = (id) => {
-    // Placeholder navigation (implement edit page later if needed)
-    // Could navigate to /store-manager/edit/:id in the future
-    navigate('/store-manager/add-book', { state: { editId: id } });
-  };
+  navigate(`/store-manager/edit-book/${id}`);
+};
 
   const handleLogout = () => {
     localStorage.removeItem('isAdminAuthenticated');
