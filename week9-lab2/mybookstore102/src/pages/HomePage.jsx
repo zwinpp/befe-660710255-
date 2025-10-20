@@ -19,7 +19,7 @@ const HomePage = () => {
   return (
     <div className="min-h-screen ">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-red-700 text-white">
+      <section className="relative bg-gradient-to-r from-indigo-500 to-cyan-700 text-white">
         <div className="container mx-auto px-4 py-24">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
@@ -140,22 +140,22 @@ const HomePage = () => {
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 bg-blue-600">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-16 bg-gradient-to-l from-indigo-500 to-cyan-700 ">
+        <div className="container mx-auto px-4 text-center ">
           <h2 className="text-3xl font-bold text-white mb-4">
             รับข่าวสารและโปรโมชั่นล่าสุด
           </h2>
-          <p className="text-viridian-200 mb-8">
+          <p className="text-white mb-8">
             สมัครรับจดหมายข่าวเพื่อไม่พลาดหนังสือใหม่และส่วนลดพิเศษ
           </p>
           <form className="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
             <input 
               type="email" 
               placeholder="กรอกอีเมลของคุณ"
-              className="flex-1 px-6 py-3 rounded-lg focus:outline-none focus:ring-4 
+              className="flex-1 px-6 py-3 rounded-lg focus:outline-none focus:ring-4  shadow-lg
                 focus:ring-viridian-300 text-gray-900"
             />
-            <button type="submit" className="px-8 py-3 bg-yellow-400 text-viridian-900 
+            <button type="submit" className="px-8 py-3 bg-yellow-400 text-viridian-900 shadow-lg 
               font-semibold rounded-lg hover:bg-yellow-300 transition-colors">
               สมัครรับข่าว
             </button>
